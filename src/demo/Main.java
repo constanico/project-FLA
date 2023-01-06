@@ -24,15 +24,25 @@ public class Main {
 			
 			switch (menu) {
 			case 1:
-				
+				orderCoffee();
 				break;
 			case 2:
-				
+				viewOrder();
 				break;
 			case 3:
 				return;
 			}
 		}
+	}
+
+	private void orderCoffee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void viewOrder() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public static void main(String[] args) {

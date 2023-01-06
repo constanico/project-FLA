@@ -1,7 +1,7 @@
 package singleton;
 
 import java.util.ArrayList;
-import model.Order;
+import factory.Order;
 
 public class Database {
 	
