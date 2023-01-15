@@ -22,11 +22,6 @@ public class CoffeeBuilder {
         return this;
     }
 
-    public CoffeeBuilder setCoffeeType(String coffeeType){
-        coffee.setCoffeeType(coffeeType);
-        return this;
-    }
-
     public CoffeeBuilder setEspresso(Espresso espresso){
         coffee.setEspresso(espresso);
         return this;
