@@ -1,8 +1,8 @@
-package factory;
+package model;
 
 public class Espresso {
     
     public Espresso(){
-        
+
     }
 }

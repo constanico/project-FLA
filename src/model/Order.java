@@ -1,4 +1,4 @@
-package factory;
+package model;
 
 import payment.Payment;
 
