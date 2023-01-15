@@ -1,9 +1,9 @@
-package factory;
+package model;
 
 public class Milk {
-
-	public Milk() {
-		// TODO Auto-generated constructor stub
+	int  ml;
+	public Milk(int ml) {
+		this.ml = ml;
 	}
 
 }
