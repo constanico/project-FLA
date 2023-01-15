@@ -1,4 +1,4 @@
-package factory;
+package model;
 
 public abstract class Coffee {
 
@@ -10,11 +10,11 @@ public abstract class Coffee {
 	private Water water;
 
 	public String getCoffeeType() {
-		return coffeeType;
+		return type;
 	}
 
 	public void setCoffeeType(String coffeeType) {
-		this.coffeeType = coffeeType;
+		this.type = coffeeType;
 	}
 
 	public Espresso getEspresso() {
