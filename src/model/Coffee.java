@@ -3,7 +3,6 @@ package model;
 public class Coffee {
 
 	private String name;
-	private String type;
 	private String sugar;
 	private Espresso espresso;
 	private Milk milk;
@@ -23,13 +22,6 @@ public class Coffee {
 
 	public void setSugar(String sugar){
 		this.sugar = sugar;
-	}
-	public String getCoffeeType() {
-		return type;
-	}
-
-	public void setCoffeeType(String coffeeType) {
-		this.type = coffeeType;
 	}
 
 	public Espresso getEspresso() {
