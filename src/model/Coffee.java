@@ -9,6 +9,21 @@ public abstract class Coffee {
 	private Milk milk;
 	private Water water;
 
+	public String getName(){
+		return name;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getSugar(){
+		return sugar;
+	}
+
+	public void setSugar(String sugar){
+		this.sugar = sugar;
+	}
 	public String getCoffeeType() {
 		return type;
 	}
