@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Coffee {
+public class Coffee {
 
 	private String name;
 	private String type;
