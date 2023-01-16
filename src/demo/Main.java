@@ -2,6 +2,7 @@ package demo;
 
 import java.util.Scanner;
 
+import facade.OrderingCoffeeFacade;
 import model.Order;
 import singleton.Database;
 
@@ -40,21 +41,8 @@ public class Main {
 
 	private void orderCoffee() {
 		// TODO Auto-generated method stub
-		System.out.println("Menu");
-		System.out.println("========================");
-		System.out.println("1. Ristretto");
-		System.out.println("2. Espresso");
-		System.out.println("3. Lungo");
-		System.out.println("4. Macchiato");
-		System.out.println("5. Cortado");
-		System.out.println("6. Americano");
-		System.out.println("7. Flat White");
-		System.out.println("8. Cappucinno");
-		System.out.println("9. Cafe Au Lait");
-		System.out.println("10. Cafe Latte");
-		System.out.println("11. Piccolo Latte");
-		System.out.println("12. Cafe Mocha");
-		System.out.print(">>");
+		OrderingCoffeeFacade ocf = new OrderingCoffeeFacade();
+		ocf.OrderingCoffee();
 	}
 
 	private void viewOrder() {
