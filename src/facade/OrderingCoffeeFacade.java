@@ -19,6 +19,7 @@ public class OrderingCoffeeFacade {
             System.out.println("3. Flat WHite");
             System.out.println("4. Cappuccino");
             System.out.println("5. Cafe Latte");
+            System.out.print(">>");
             order = sc.nextLine();
         } while (!(order.equalsIgnoreCase("Espresso") || order.equalsIgnoreCase("Americano") || order.equalsIgnoreCase("Flat White") || order.equalsIgnoreCase("Cappuccino") || order.equalsIgnoreCase("Cafe Latte")));
 
