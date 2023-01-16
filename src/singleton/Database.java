@@ -10,7 +10,7 @@ public class Database {
 	private ArrayList<Order> transactionList;
 	private HashMap<Object, Integer> stock;
 
-	private Database() {
+	public Database() {
 		transactionList = new ArrayList<>();
 		stock = new HashMap<>();
 	}
