@@ -15,5 +15,9 @@ public class TransfertoPaymentAdapter implements Payment{
 		// TODO Auto-generated method stub
 		return "Rp " + transfer.getTransferPrice() + " transfer from " + transfer.getAccountNumber();
 	}
+	@Override
+	public int getPrice() {
+		return transfer.getTransferPrice();
+	}
 
 }

@@ -16,5 +16,11 @@ public class CashtoPaymentAdapter implements Payment{
         // TODO Auto-generated method stub
         return "Rp " + cash.getCashPrice() + " (Cash)";
     }
+
+    @Override
+    public int getPrice() {
+        // TODO Auto-generated method stub
+        return cash.getCashPrice();
+    }
     
 }
