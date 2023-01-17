@@ -1,6 +1,7 @@
 package facade;
 
 import model.Coffee;
+import model.Espresso;
 import model.Milk;
 import model.Water;
 import singleton.Database;
@@ -8,7 +9,7 @@ import singleton.Database;
 public class InsertStockFacade {
     
     Database db = Database.getDatabase();
-    Coffee coffee;
+    Espresso coffee;
     Milk milk;
     Water water;
     private Integer waterStock, milkStock, coffeeStock;
