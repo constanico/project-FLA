@@ -1,7 +1,9 @@
 package facade;
 
 import builder.CoffeeBuilder;
+import factory.FoamMilkFactory;
 import factory.MilkFactory;
+import factory.SteamedMilkFactory;
 import model.Coffee;
 import model.Espresso;
 import model.Milk;
@@ -10,18 +12,19 @@ import singleton.Database;
 
 public class BrewingCoffeeFacade {
     private Database db = Database.getDatabase();
-    private MilkFactory steamed;
-    private MilkFactory foam;
+    private MilkFactory steamed = new SteamedMilkFactory();
+    private MilkFactory foam = new FoamMilkFactory();
     private Coffee coffee;
     private Espresso espresso = new Espresso();
     private Water water = new Water();
-    private Milk foamMilk;
-    private Milk steamMilk;
+    private Milk foamMilk = null;
+    private Milk steamMilk = null;
 
     public Coffee brewingEspresso(){
         coffee = new CoffeeBuilder().setName("Espresso").setEspresso(espresso).buildCoffee();
         db.getStock().replace("coffee", db.getStock().get("coffee") - 1);
         System.out.println("Brewing " + coffee.getName());
+        System.out.println();
         return coffee;
     }
 
@@ -30,6 +33,7 @@ public class BrewingCoffeeFacade {
         db.getStock().replace("coffee", db.getStock().get("coffee") - 1);
         db.getStock().replace("water", db.getStock().get("water") - water.getMl());
         System.out.println("Brewing " + coffee.getName());
+        System.out.println();
         return coffee;
     }
 
@@ -40,6 +44,7 @@ public class BrewingCoffeeFacade {
         db.getStock().replace("coffee", db.getStock().get("coffee") - 1);
         db.getStock().replace("milk", db.getStock().get("milk") - coffee.getMilk().getMl());
         System.out.println("Brewing " + coffee.getName());
+        System.out.println();
         Milk.setMl();
         return coffee;
     }
@@ -51,6 +56,7 @@ public class BrewingCoffeeFacade {
         db.getStock().replace("coffee", db.getStock().get("coffee") - 1);
         db.getStock().replace("milk", db.getStock().get("milk") - coffee.getMilk().getMl());
         System.out.println("Brewing " + coffee.getName());
+        System.out.println();
         Milk.setMl();
         return coffee;
     }
@@ -62,6 +68,7 @@ public class BrewingCoffeeFacade {
         db.getStock().replace("coffee", db.getStock().get("coffee") - 1);
         db.getStock().replace("milk", db.getStock().get("milk") - coffee.getMilk().getMl());
         System.out.println("Brewing " + coffee.getName());
+        System.out.println();
         Milk .setMl();
         return coffee;
     }
