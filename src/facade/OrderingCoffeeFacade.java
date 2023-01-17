@@ -32,7 +32,9 @@ public class OrderingCoffeeFacade {
             System.out.print(">>");
             order = sc.nextLine();
         } while (!(order.equalsIgnoreCase("Espresso") || order.equalsIgnoreCase("Americano") || order.equalsIgnoreCase("Flat White") || order.equalsIgnoreCase("Cappuccino") || order.equalsIgnoreCase("Cafe Latte")));
-
+        
+        System.out.println();
+        
         if (order.equalsIgnoreCase("Espresso")) {
             coffee = brewCoffee.brewingEspresso();
         } else if(order.equalsIgnoreCase("Americano")){
