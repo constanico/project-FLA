@@ -13,6 +13,7 @@ public class Main {
 	Database database;
 	public Main() {
 		InsertStockFacade isf = new InsertStockFacade(10000, 10000, 50);
+		isf.insertingStock();
 		int menu = 0;
 		
 		while (true) {

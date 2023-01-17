@@ -16,7 +16,6 @@ public class InsertStockFacade {
         this.waterStock = waterStock;
         this.milkStock = milkStock;
         this.coffeeStock = coffeeStock;
-        insertingStock();
     }
 
     public void insertingStock(){
