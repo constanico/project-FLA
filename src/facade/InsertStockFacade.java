@@ -19,8 +19,8 @@ public class InsertStockFacade {
     }
 
     public void insertingStock(){
-        db.getStock().put(coffee, coffeeStock);
-        db.getStock().put(water, waterStock);
-        db.getStock().put(milk, milkStock);
+        db.getStock().put("coffee", coffeeStock);
+        db.getStock().put("water", waterStock);
+        db.getStock().put("milk", milkStock);
     }
 }

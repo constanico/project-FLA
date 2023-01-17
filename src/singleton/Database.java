@@ -8,7 +8,7 @@ public class Database {
 	
 	private static Database database = null;
 	private ArrayList<Order> transactionList;
-	private HashMap<Object, Integer> stock;
+	private HashMap<String, Integer> stock;
 
 	public Database() {
 		transactionList = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Database {
 		return transactionList;
 	}
 
-	public HashMap<Object, Integer> getStock(){
+	public HashMap<String, Integer> getStock(){
 		return stock;
 	}
 
