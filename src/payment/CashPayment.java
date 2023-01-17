@@ -2,11 +2,13 @@ package payment;
 
 public class CashPayment {
 
-	private Integer price;
+	protected Integer price;
 
 	public CashPayment(Integer price) {
-		super();
 		this.price = price;
+	}
+
+	public CashPayment(){
 	}
 
 	public Integer getCashPrice() {
