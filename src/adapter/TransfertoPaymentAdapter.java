@@ -13,7 +13,7 @@ public class TransfertoPaymentAdapter implements Payment{
 	@Override
 	public String getPaymentDescription() {
 		// TODO Auto-generated method stub
-		return "Rp " + transfer.getTransferPrice() + " from " + transfer.getAccountNumber();
+		return "Rp " + transfer.getTransferPrice() + " transfer from " + transfer.getAccountNumber();
 	}
 
 }
