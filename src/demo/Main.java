@@ -56,23 +56,28 @@ public class Main {
 	}
 
 	private void viewOrder() {
-		int i = 1;
-		int total = 0;
-		for (Order order : database.getTransactionList()) {
-			System.out.print(i + ". " + order.getCoffee().getName());
-			if(order.getCoffee().getSugar() == null){
-				System.out.println();
+		if(database.getTransactionList().isEmpty()) {
+			System.out.println("No order yet!");
+		}else {
+			int i = 1;
+			int total = 0;
+			for (Order order : database.getTransactionList()) {
+				System.out.print(i + ". " + order.getCoffee().getName());
+				if(order.getCoffee().getSugar() == null){
+					System.out.println();
+				}
+				else{
+					System.out.println(" (" + order.getCoffee().getSugar() + ")");
+				}
+				System.out.println("   Payment: " + order.getPayment().getPaymentDescription());
+				total += order.getPayment().getPrice();
+				i++;
 			}
-			else{
-				System.out.println(" (" + order.getCoffee().getSugar() + ")");
-			}
-			System.out.println("   Payment: " + order.getPayment().getPaymentDescription());
-			total += order.getPayment().getPrice();
-			i++;
+			
+			System.out.println("======================");
+			System.out.println("Total Price:  " + total);
 		}
 		
-		System.out.println("======================");
-		System.out.println("Total Price:  " + total);
 	}
 
 	private void cls() {
