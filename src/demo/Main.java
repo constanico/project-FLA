@@ -10,7 +10,7 @@ import singleton.Database;
 public class Main {
 	
 	private Scanner scan = new Scanner(System.in);
-	Database database;
+	Database database = Database.getDatabase();
 	public Main() {
 		InsertStockFacade isf = new InsertStockFacade(10000, 10000, 50);
 		isf.insertingStock();
@@ -28,13 +28,21 @@ public class Main {
 				menu = scan.nextInt();
 				scan.nextLine();
 			} while (menu < 1 || menu > 3);
-			
+			cls();
 			switch (menu) {
 			case 1:
-				orderCoffee();
+				if(!(database.getStock().get("coffee") <= 0 || database.getStock().get("milk") <= 0 || database.getStock().get("coffee") <= 0)){
+					orderCoffee();
+				}
+				else{
+					System.out.println("Sorry, we're out of stock");
+				}
+				cls();
 				break;
 			case 2:
 				viewOrder();
+				scan.nextLine();
+				cls();
 				break;
 			case 3:
 				return;
@@ -43,22 +51,32 @@ public class Main {
 	}
 
 	private void orderCoffee() {
-		// TODO Auto-generated method stub
 		OrderingCoffeeFacade ocf = new OrderingCoffeeFacade();
 		ocf.OrderingCoffee();
 	}
 
 	private void viewOrder() {
-		// TODO Auto-generated method stub
+		int i = 1;
 		for (Order order : database.getTransactionList()) {
-			int i = 1;
-			System.out.println(i + " " + order.getCoffee().getName());
+			System.out.print(i + ". " + order.getCoffee().getName());
+			if(order.getCoffee().getSugar() == null){
+				System.out.println();
+			}
+			else{
+				System.out.println(" (" + order.getCoffee().getSugar() + ")");
+			}
+			System.out.println("   Payment: " + order.getPayment().getPaymentDescription());
 			i++;
 		}
 	}
 
+	private void cls() {
+		for(int i = 0; i < 5; i++){
+			System.out.println();
+		}
+	}
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new Main();
 	}
 
