@@ -2,15 +2,25 @@ package facade;
 
 import java.util.Scanner;
 
+import adapter.CashtoPaymentAdapter;
+import adapter.TransfertoPaymentAdapter;
+import model.Coffee;
+import model.Order;
+import payment.CashPayment;
+import payment.Payment;
+import payment.TransferPayment;
 import singleton.Database;
 
 public class OrderingCoffeeFacade {
     Scanner sc = new Scanner(System.in);
+    private Coffee coffee;
     private Database db = Database.getDatabase();
     private BrewingCoffeeFacade brewCoffee = new BrewingCoffeeFacade();
-    private String order;
+    private Payment paymentMethod;
+    private String order, payment;
     private String sugar;
-    private int price;
+    private int price = 0;
+    private Order finishOrder;
     public void OrderingCoffee(){
         do {
             System.out.println("What do you want to oder?");
@@ -24,9 +34,9 @@ public class OrderingCoffeeFacade {
         } while (!(order.equalsIgnoreCase("Espresso") || order.equalsIgnoreCase("Americano") || order.equalsIgnoreCase("Flat White") || order.equalsIgnoreCase("Cappuccino") || order.equalsIgnoreCase("Cafe Latte")));
 
         if (order.equalsIgnoreCase("Espresso")) {
-            brewCoffee.brewingEspresso();
+            coffee = brewCoffee.brewingEspresso();
         } else if(order.equalsIgnoreCase("Americano")){
-            brewCoffee.brewingAmericano();
+            coffee = brewCoffee.brewingAmericano();
         }
         else{
             do {
@@ -36,17 +46,49 @@ public class OrderingCoffeeFacade {
             } while (!(sugar.equalsIgnoreCase("No Sugar") || sugar.equalsIgnoreCase("Less Sugar") || sugar.equalsIgnoreCase("Normal Sugar") || sugar.equalsIgnoreCase("125% Sugar")));
             
             if(order.equalsIgnoreCase("Flat White")){
-                brewCoffee.brewingFlatWhite(sugar);
+                coffee = brewCoffee.brewingFlatWhite(sugar);
             }
             else if(order.equalsIgnoreCase("Cappuccino")){
-                brewCoffee.brewingCappuccino(sugar);
+                coffee = brewCoffee.brewingCappuccino(sugar);
             }
             else if(order.equalsIgnoreCase("Cafe Latte")){
-                brewCoffee.brewingCafeLatte(sugar);
+                coffee = brewCoffee.brewingCafeLatte(sugar);
             }
         }
+        transactionOrder();
+    }
 
+    public void transactionOrder(){
+        do {
+            System.out.println("Choose your payment:");
+            System.out.println("1. Cash");
+            System.out.println("2. Transfer");
+            payment = sc.nextLine();
+        } while (!(payment.equalsIgnoreCase("Cash") || payment.equalsIgnoreCase("Transfer")));
 
+        if (order.equalsIgnoreCase("Espresso")) {
+            price = 15000;
+        } else if(order.equalsIgnoreCase("Americano")){
+            price = 20000;
+        }
+        else if(order.equalsIgnoreCase("Flat White") || order.equalsIgnoreCase("Cappuccino") || order.equalsIgnoreCase("Cafe Latte")){
+            price = 25000;
+        }
+        
+        if(payment.equalsIgnoreCase("Cash")){
+            paymentMethod = new CashtoPaymentAdapter(new CashPayment(price));
+        }
+        else if(payment.equalsIgnoreCase("Transfer")){
+            System.out.print("Input your account number: ");
+            String accountNumber = sc.nextLine();
+            paymentMethod = new TransfertoPaymentAdapter(new TransferPayment(price, accountNumber));
+        }
+        addingToRepository();
+    }
+
+    public void addingToRepository(){
+        finishOrder = new Order(coffee, paymentMethod);
+        db.getTransactionList().add(finishOrder);
     }
     
 }
