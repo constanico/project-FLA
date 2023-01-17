@@ -2,6 +2,7 @@ package demo;
 
 import java.util.Scanner;
 
+import facade.InsertStockFacade;
 import facade.OrderingCoffeeFacade;
 import model.Order;
 import singleton.Database;
@@ -11,6 +12,7 @@ public class Main {
 	private Scanner scan = new Scanner(System.in);
 	Database database;
 	public Main() {
+		InsertStockFacade isf = new InsertStockFacade(10000, 10000, 50);
 		int menu = 0;
 		
 		while (true) {
