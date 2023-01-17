@@ -9,7 +9,7 @@ public class Milk {
 		return ml;
 	}
 
-	public void setMl(){ //balikin jadi 0 buat coffe baru
+	public static void setMl(){ //balikin jadi 0 buat coffe baru
 		ml = 0;
 	}
 }
