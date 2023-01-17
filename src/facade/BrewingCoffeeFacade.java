@@ -1,8 +1,6 @@
 package facade;
 
 import java.util.HashMap;
-import java.util.Map;
-
 import builder.CoffeeBuilder;
 import factory.MilkFactory;
 import model.Coffee;
@@ -23,46 +21,51 @@ public class BrewingCoffeeFacade {
     private Milk foamMilk;
     private Milk steamMilk;
 
-    public void brewingEspresso(){
+    public Coffee brewingEspresso(){
         coffee = new CoffeeBuilder().setName("Espresso").setEspresso(espresso).buildCoffee();
         stock.put(coffee, stock.get(coffee) - 1);
         System.out.println("Brewing " + coffee.getName());
+        return coffee;
     }
 
-    public void brewingAmericano(){
+    public Coffee brewingAmericano(){
         coffee = new CoffeeBuilder().setName("Americano").setEspresso(espresso).setWater(water).buildCoffee();
         stock.put(coffee, stock.get(coffee) - 1);
         stock.put(water, stock.get(water) - water.getMl());
         System.out.println("Brewing " + coffee.getName());
+        return coffee;
     }
 
-    public void brewingFlatWhite(String sugar){
+    public Coffee brewingFlatWhite(String sugar){
         foamMilk = foam.createMilkType(10);
         steamMilk = steamed.createMilkType(250);
         coffee = new CoffeeBuilder().setName("Flat White").setEspresso(espresso).setSteamedMilk(steamMilk).setFoam(foamMilk).setSugar(sugar).buildCoffee();
         stock.put(coffee, stock.get(coffee) - 1);
         stock.put(milk, stock.get(milk) - coffee.getMilk().getMl());
         System.out.println("Brewing " + coffee.getName());
-        coffee.getMilk().setMl();
+        Milk.setMl();
+        return coffee;
     }
 
-    public void brewingCappuccino(String sugar){
+    public Coffee brewingCappuccino(String sugar){
         foamMilk = foam.createMilkType(50);
         steamMilk = steamed.createMilkType(250);
         coffee = new CoffeeBuilder().setName("Cappuccino").setEspresso(espresso).setSteamedMilk(steamMilk).setFoam(foamMilk).setSugar(sugar).buildCoffee();
         stock.put(coffee, stock.get(coffee) - 1);
         stock.put(milk, stock.get(milk) - coffee.getMilk().getMl());
         System.out.println("Brewing " + coffee.getName());
-        coffee.getMilk().setMl();
+        Milk.setMl();
+        return coffee;
     }
 
-    public void brewingCafeLatte(String sugar){
+    public Coffee brewingCafeLatte(String sugar){
         foamMilk = foam.createMilkType(30);
         steamMilk = steamed.createMilkType(250);
         coffee = new CoffeeBuilder().setName("Cafe Latte").setEspresso(espresso).setSteamedMilk(steamMilk).setFoam(foamMilk).setSugar(sugar).buildCoffee();
         stock.put(coffee, stock.get(coffee) - 1);
         stock.put(milk, stock.get(milk) - coffee.getMilk().getMl());
         System.out.println("Brewing " + coffee.getName());
-        coffee.getMilk().setMl();
+        Milk .setMl();
+        return coffee;
     }
 }
