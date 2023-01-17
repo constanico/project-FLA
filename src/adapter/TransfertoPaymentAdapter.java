@@ -1,6 +1,4 @@
 package adapter;
-
-import payment.CashPayment;
 import payment.Payment;
 import payment.TransferPayment;
 
